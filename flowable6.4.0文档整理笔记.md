@@ -4,6 +4,7 @@
   ### 什么是Flowable？
 Flowable是一个用Java编写的轻量级业务流程引擎。Flowable流程引擎允许您部署BPMN 2.0流程定义（用于定义流程的行业XML标准），创建流程定义的流程实例，运行查询，访问活动或历史流程实例和相关数据等等。
 	Flowable是Activiti5.22的一个分支，Flowable6融合Activiti6的基本功能，并且修复了Activiti6的bug。
+	
    [Java实例参考官网](https://www.flowable.org/docs/userguide/index.html#getting.started.command.line) 
 
 ### 数据库表名词解释
@@ -37,10 +38,11 @@ Flowable是一个用Java编写的轻量级业务流程引擎。Flowable流程引
 
 ### Process Engine API和服务
  - 基本结构图如下：
- ![enter image description here](https://github.com/yeeNote/flowable/Flowable-service.png)
+ ![enter image description here](https://github.com/yeeNote/flowable/tree/master/images/Flowable-service.png)
  
 ```
 RuntimeService runtimeService = processEngine.getRuntimeService();
+
 RepositoryService repositoryService = processEngine.getRepositoryService();
 TaskService taskService = processEngine.getTaskService();
 ManagementService managementService = processEngine.getManagementService();
@@ -69,12 +71,27 @@ ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(input
          - [ ] 文本方式部署:默认是UTF-8
          ```
          String text =  IoUtil.readFileAsString("classpath_deploy.bpmn");		     
-         Deployment deploy repositoryService
+         Deployment deploy = repositoryService
 					         .createDeployment()
 					         .addString("text_deploy.bpmn",text)
 					         .deploy();         
          ```
          - [ ] 流的方式方式部署
+        ```
+        InputStream inputStream = MainClass.class.getClassLoader().getResourceAsStream("classpath_deploy.bpmn");
+
+DeploymentBuilder deploymentBuilder = repositoryService.createDeployment()
+
+.category("流的方式方式部署分类")
+
+.name("流的方式方式部署名称")
+
+.key("流的方式方式部署测试的key")
+
+.addInputStream("inputstream_deploy.bpmn",inputStream);
+
+Deployment deploy = deploymentBuilder.deploy();
+        ```
          - [ ] 压缩包的方式方式部署
          ```
          InputStream inputStream = SpringTest.class.getClassLoader().getResourceAsStream("1.zip");
@@ -85,6 +102,26 @@ ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(input
                                             .deploy();
          ```
          - [ ] 字节的方式方式部署
+         ```
+         String inputStreamName = "测试字节方式部署流程";
+
+InputStream inputStream = SpringTest.class.getClassLoader().getResourceAsStream("classpath_deploy.bpmn");
+
+byte[] bytes = IoUtil.readInputStream(inputStream,inputStreamName) ;
+
+DeploymentBuilder deploymentBuilder = repositoryService.createDeployment()
+
+.category("字节的方式分类")
+
+.name("字节的方式方式部署名称")
+
+.key("测试的key")
+
+.addBytes("bytes_deploy.bpmn",bytes);
+
+Deployment deploy = deploymentBuilder.deploy();
+               ```
+         - [ ] 
     - **RuntimeService**: 启动流程定义的新流程实例。也可以检索和存储服务流程变量，查询流程运行实例，出发流程实例继续执行。
     - **TaskService**：查询人工任务；创建新的_独立_任务。这些是与流程实例无关的任务，操作分配任务的用户或以某种方式参与任务的用户；认领任务，使得该用户可以执行此任务。
     - **IdentityService**: 组和用户的管理，也可以指定流程中的候选人。
@@ -101,5 +138,5 @@ ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(input
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDQ5MjcxODldfQ==
+eyJoaXN0b3J5IjpbMTY1NTM1NDg3Nl19
 -->
