@@ -57,9 +57,9 @@ DynamicBpmnService dynamicBpmnService = processEngine.getDynamicBpmnService();
 	- [ ] Spring 风格配置：配置文件：flowable.cfg.xml。首先创建Spring应用程序上下文，然后从该应用程序上下文获取流程引擎。配置类为SpringProcessEngineConfiguration。
 	
    - [ ]  标准的Flowable配置：配置文件为flowable.cfg.xml。其中流程引擎的创建方式有五种，可以参考ProcessEngineConfiguration类。其中经典构建方式为
- ```
-ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine()。
- ```
+   ```
+   ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine()。
+   ```
 
  
   - services
@@ -122,5 +122,5 @@ Deployment deploy = deploymentBuilder.deploy();
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMTczNTA2Ml19
+eyJoaXN0b3J5IjpbLTE5NjQxOTYxMjZdfQ==
 -->
