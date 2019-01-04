@@ -61,8 +61,7 @@ DynamicBpmnService dynamicBpmnService = processEngine.getDynamicBpmnService();
    ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine()。
    ```
 
- 
-  - services
+ - services
     - **RepositoryService**： 用于流程部署是流程定义查询。 提供了五种部署方式：
          - [ ] classpath方式部署：
          ```
@@ -122,5 +121,5 @@ Deployment deploy = deploymentBuilder.deploy();
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjQxOTYxMjZdfQ==
+eyJoaXN0b3J5IjpbLTE1Mjk0NzM3Nl19
 -->
