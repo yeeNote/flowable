@@ -12,7 +12,7 @@ Flowable具有丰富的REST API，几乎可以完全覆盖Flowable Java API。�
 
 架构：
 
-![](./Flowable-Architecture.png)
+![](.images/Flowable-Architecture.png)
 
 
 
@@ -375,5 +375,5 @@ DmnManagementService dmnManagementService = dmnEngine.getDmnManagementService();
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0Mjk3NTk4MV19
+eyJoaXN0b3J5IjpbLTE3NDAzMTc3NDksLTg0Mjk3NTk4MV19
 -->
