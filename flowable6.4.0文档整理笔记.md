@@ -54,14 +54,15 @@ DynamicBpmnService dynamicBpmnService = processEngine.getDynamicBpmnService();
 `ProcessEngines.getDefaultProcessEngine()`将在第一次调用时初始化并构建流程引擎，之后始终返回相同的流程引擎。可以使用`ProcessEngines.init()` 和完成所有流程引擎的正确创建和关闭`ProcessEngines.destroy()`。
 
 - ProcessEngines类将扫描所有配置文件，配置方式有以下两种：
-
-  - 标准的Flowable配置：配置文件为flowable.cfg.xml。其中流程引擎的创建方式有五种，可以参考ProcessEngineConfiguration类。其中经典构建方式为
+	- [ ] Spring 风格配置：配置文件：flowable.cfg.xml。首先创建Spring应用程序上下文，然后从该应用程序上下文获取流程引擎。配置类为SpringProcessEngineConfiguration。
+	
+   - [ ]  标准的Flowable配置：配置文件为flowable.cfg.xml。其中流程引擎的创建方式有五种，可以参考ProcessEngineConfiguration类。其中经典构建方式为
  ```
 ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine()。
  ```
-  - Spring 风格配置：配置文件：flowable.cfg.xml。首先创建Spring应用程序上下文，然后从该应用程序上下文获取流程引擎。配置类为SpringProcessEngineConfiguration。
+
  
-- services
+  - services
     - **RepositoryService**： 用于流程部署是流程定义查询。 提供了五种部署方式：
          - [ ] classpath方式部署：
          ```
@@ -121,5 +122,5 @@ Deployment deploy = deploymentBuilder.deploy();
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjM4ODgwOTBdfQ==
+eyJoaXN0b3J5IjpbMTUyMTczNTA2Ml19
 -->
