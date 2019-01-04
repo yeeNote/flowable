@@ -52,7 +52,7 @@ FormService formService = processEngine.getFormService();
 DynamicBpmnService dynamicBpmnService = processEngine.getDynamicBpmnService();
 ```
 `ProcessEngines.getDefaultProcessEngine()`将在第一次调用时初始化并构建流程引擎，之后始终返回相同的流程引擎。可以使用`ProcessEngines.init()` 和完成所有流程引擎的正确创建和关闭`ProcessEngines.destroy()`。
-ProcessEngines类将扫描所有文件有两种方式：
+ProcessEngines类将扫描所有配置文件，配置方式有以下两种：
  - [ ] 标准的Flowable配置：配置文件为flowable.cfg.xml。其中流程引擎的创建方式有五种，可以参考ProcessEngineConfiguration类。其中经典构建方式为
  ```
 ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine()。
@@ -118,5 +118,5 @@ Deployment deploy = deploymentBuilder.deploy();
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM0NjgxNTAxXX0=
+eyJoaXN0b3J5IjpbLTE4MTMwMDc0NDFdfQ==
 -->
