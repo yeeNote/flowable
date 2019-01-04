@@ -2,7 +2,7 @@
 ## Flowable基本概念
 
   ### 什么是Flowable？
-	Flowable是一个用Java编写的轻量级业务流程引擎。Flowable流程引擎允许您部署BPMN 2.0流程定义（用于定义流程的行业XML标准），创建流程定义的流程实例，运行查询，访问活动或历史流程实例和相关数据等等。
+Flowable是一个用Java编写的轻量级业务流程引擎。Flowable流程引擎允许您部署BPMN 2.0流程定义（用于定义流程的行业XML标准），创建流程定义的流程实例，运行查询，访问活动或历史流程实例和相关数据等等。
 	Flowable是Activiti5.22的一个分支，Flowable6融合Activiti6的基本功能，并且修复了Activiti6的bug。
    [Java实例参考官网](https://www.flowable.org/docs/userguide/index.html#getting.started.command.line) 
 
@@ -101,5 +101,5 @@ ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(input
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MzYzNTQ3NV19
+eyJoaXN0b3J5IjpbLTE2MDQ5MjcxODldfQ==
 -->
