@@ -77,7 +77,29 @@ DynamicBpmnService dynamicBpmnService = processEngine.getDynamicBpmnService();
     - **FormService**: 表单相关的服务，表单不需要嵌入到流程定义中。
     - **HistoryService**：和历史数据有关的服务。
     - **ManagementService**: 获取数据库和表单元数据信息，此外还可以对Job的查询和管理。
-    - **DynamicBpmnService**： 改变流程定义的一部分，而无需重新部署，以更改流程定义中用户任务的受理人定义，或更改服务任务的类名称
+    - **DynamicBpmnService**： 改变流程定义的一部分，而无需重新部署，以更改流程定义中用户任务的受理人定义，或更改服务任务的类名称。
+
+
+
+## 流程实例迁移
+当使用新版本更新流程定义时，问题就出现了如何使用旧版本的流程定义运行的流程实例。如果应将运行流程实例迁移到另一个流程定义版本，则可以使用Flowable Engine上的流程实例迁移功能。
+- 简单示例：
+	例如旧的流程：启动事件 --> 用户任务1  --> 结束事件。正在运行的活动任务是在用户任务1。
+	使用相同的键部署新的流程定义新的流程：启动事件 --> 用户任务1--> 用户任务2  --> 结束事件。
+```
+ProcessInstanceMigrationValidationResult  validationResult  =  runtimeService
+.createProcessInstanceMigrationBuilder()  .migrateToProcessDefinition(version2ProcessDef.getId())  .migrate(processInstanceToMigrate.getId());
+```
+执行migrate方法后，正在运行的流程实例将迁移到新流程定义（包括历史信息）。这意味着当用户任务1完成时，用户任务2将成为正在运行的流程实例的下一个活动状态。
+
+- 指定特定状态迁移
+	在简单示例中，用户任务1自动映射到新流程定义版本中的同一用户任务。但在某些情况下，正在运行的流程实例的当前活动在新流程定义中不再存在，或者由于其他原因应将活动迁移到另一个活动。对于此用例，流程实例迁移构建器允许您指定特定活动迁移映射的列表。
+
+```
+ProcessInstanceMigrationValidationResult  validationResult  =  runtimeService
+.createProcessInstanceMigrationBuilder()  .migrateToProcessDefinition(version2ProcessDef.getId())  .addActivityMigrationMapping("userTask1Id",  "userTask2Id")  .migrate(processInstanceToMigrate.getId());
+```
+在此示例中，具有活动状态为用户任务1的运行流程实例将迁移到具有2个用户任务的新流程定义版本，并且活动状态将迁移到用户任务2.这意味着当用户任务2完成时流程实例将结束。
  
 
 
@@ -87,5 +109,5 @@ DynamicBpmnService dynamicBpmnService = processEngine.getDynamicBpmnService();
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE4NjM5MTQ0XX0=
+eyJoaXN0b3J5IjpbMTk2NTg3NTYzOSw2MTg2MzkxNDRdfQ==
 -->
